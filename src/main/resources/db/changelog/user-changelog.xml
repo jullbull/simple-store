@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="001" author="jullbull">
+
+        <createTable tableName="USERS">
+            <column name="id" type="bigint" >
+                <constraints nullable="false" uniqueConstraintName="fk_user_id" unique="true"/>
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints nullable="false" uniqueConstraintName="fk_user_username" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)"/>
+            <column name="email" type="varchar(255)"/>
+            <column name="account_non_expired" type="boolean">
+            </column>
+            <column name="account_non_locked" type="boolean"/>
+            <column name="credentials_non_expired" type="boolean"/>
+            <column name="enabled" type="boolean"/>
+            <column name="firstname" type="varchar"/>
+            <column name="lastname" type="varchar"/>
+            <column name="created_date" type="date"/>
+            <column name="gender" type="varchar(1)"/>
+
+        </createTable>
+        <addAutoIncrement tableName="users" columnName="id" incrementBy="1" startWith="100"/>
+    </changeSet>
+    <changeSet id="002" author="jullbull">
+
+        <createTable tableName="ROLES">
+            <column name="id" type="bigint" >
+                <constraints nullable="false" uniqueConstraintName="fk_role_id" unique="true"/>
+            </column>
+            <column name="name" type="varchar(60)">
+            <constraints nullable="false" uniqueConstraintName="fk_role_name" unique="true"/>
+            </column>
+        </createTable>
+        <addAutoIncrement tableName="ROLES" columnName="id" incrementBy="1" startWith="1"/>
+    </changeSet>
+
+</databaseChangeLog>
